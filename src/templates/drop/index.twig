@@ -1,0 +1,45 @@
+{% extends 'layout/base.twig' %}
+
+{% block content %}
+    <div class="row-fluid">
+        <div class="span12">
+            <div style="margin: 40px 30% 20px;font-size:16px;">
+                <span style="display:inline-block;width:150px;">选择清除方式：</span>
+                <input name="range" value="1" type="radio" checked onclick="$('.ip_class').hide()"> 全部数据
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                <input name="range" value="2" type="radio" onclick="$('.ip_class').show()"> 单ip
+            </div>
+            <div class="ip_class" style="margin: 20px 30%;font-size:16px;display:none;">
+                <span style="display:inline-block;width:150px;">请输入ip：</span>
+                <input type="text" value="" name="ip" placeholder="请输入ip，eg：127.0.0.1">
+            </div>
+            <div class="btn btn-large" style="display: block; margin:20px 32%; width: 150px;" id="dropall">清除</div>
+        </div>
+    </div><!--/row-->
+{% endblock %}
+
+
+{% block jsfoot %}
+    <script type="text/javascript">
+        $('#dropall').click(function () {
+            var range = $('input[name=range]:checked').val();
+            var ip = $('input[name=ip]').val();
+
+            if (range == 2 && ip == '') {
+                alert('请输入ip');
+                return false;
+            }
+
+            $.ajax({
+                url: '{{ url("drop.query") }}',
+                type: 'POST',
+                data: {'range' : range, 'ip' : ip},
+                success: function(data) {
+                    if (data.hasOwnProperty('info')) {
+                        alert(data.info)
+                    }
+                }
+            })
+        })
+    </script>
+{% endblock %}

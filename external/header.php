@@ -173,6 +173,7 @@ register_shutdown_function(
             $requestTs = new MongoDate($time);
             $requestTsMicro = new MongoDate($requestTimeFloat[0], $requestTimeFloat[1]);
         }
+        $_SERVER['REQUEST_TIME'] = new MongoInt64($_SERVER['REQUEST_TIME']);
 
         $data['meta'] = array(
             'url' => $uri,

@@ -28,6 +28,7 @@
                         <li {% if title=='自定义查询' %} class="current" {% endif %}><a href="{{ url('custom.view') }}">自定义查询</a></li>
                         <li {% if title=='函数监控' %} class="current" {% endif %}><a href="{{ url('watch.list') }}">函数监控</a></li>
                         <li {% if title=='瀑布图' %} class="current" {% endif %}><a href="{{ url('waterfall.list') }}">瀑布图</a></li>
+                        <li {% if title=='清除数据' %} class="current" {% endif %}><a href="{{ url('drop.view') }}">清除数据</a></li>
                     </ul>
                 </div><!--/.nav-collapse -->
             </div>

@@ -20,6 +20,10 @@ class Xhgui_Controller_Run extends Xhgui_Controller
                 $search[$key] = $request->get($key);
             }
         }
+        if (isset($search['url'])) {
+            $originUrl = $search['url'];
+            $search['url'] = preg_replace("/(\?)/", "\\\\$1", $search['url']);
+        }
         $sort = $request->get('sort');
 
         $result = $this->_profiles->getAll(array(
@@ -31,6 +35,7 @@ class Xhgui_Controller_Run extends Xhgui_Controller
             'projection' => true,
         ));
 
+        $search['url'] = isset($search['url']) ? $originUrl : '';
         $title = '最近运行';
         $titleMap = array(
             'wt' => '执行时间',

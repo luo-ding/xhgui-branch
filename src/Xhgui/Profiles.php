@@ -299,4 +299,15 @@ class Xhgui_Profiles
         }
         return $results;
     }
+
+
+    /**
+     * Remove documents.
+     *
+     * @param array $conditions
+     */
+    public function remove($conditions)
+    {
+        return $this->_collection->remove($conditions);
+    }
 }

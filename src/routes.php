@@ -108,3 +108,13 @@ $app->get('/waterfall', function () use ($di, $app) {
 $app->get('/waterfall/data', function () use ($di) {
     $di['waterfallController']->query();
 })->name('waterfall.data');
+
+// Drop routes
+$app->get('/drop', function () use ($di, $app) {
+    $app->controller = $di['dropController'];
+    $app->controller->get();
+})->name('drop.view');
+
+$app->post('/drop/query', function () use ($di) {
+    $di['dropController']->query();
+})->name('drop.query');
