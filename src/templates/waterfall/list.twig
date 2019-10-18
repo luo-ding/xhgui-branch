@@ -89,6 +89,11 @@
                         IP地址
                     </span>
                 </th>
+                <th class="right">
+                    <span class="tip" title="域名">
+                        域名
+                    </span>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -125,6 +130,9 @@
             <td class="right">{{ result.get('main()', 'mu') |as_bytes }}</td>
             <td class="right">{{ result.get('main()', 'pmu') |as_bytes }}</td>
             <td class="right"><a href="{{ url('waterfall.list', {'remote_addr': result.meta.SERVER.REMOTE_ADDR, 'request_start': result.meta.SERVER.REQUEST_TIME - 5, 'request_end': result.meta.SERVER.REQUEST_TIME + 15}) }}">{{ result.meta.SERVER.REMOTE_ADDR }}</a>
+            </td>
+            <td class="right">
+                <a href="{{ url('waterfall.list', {'server_name': result.meta.SERVER.SERVER_NAME, 'request_start': result.meta.SERVER.REQUEST_TIME - 5, 'request_end': result.meta.SERVER.REQUEST_TIME + 15}) }}">{{ result.meta.SERVER.SERVER_NAME }}</a>
             </td>
         </tr>
         {% else %}

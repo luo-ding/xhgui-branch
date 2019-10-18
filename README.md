@@ -9,3 +9,4 @@ forked from [laynefyc/xhgui-branch](https://github.com/laynefyc/xhgui-branch)
 #### 新增功能
 
 - 清除 mongodb 数据
+- 【最近运行】增加【ip地址】【域名】搜索，表头增加【域名】

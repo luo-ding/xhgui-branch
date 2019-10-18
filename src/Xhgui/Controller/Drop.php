@@ -28,7 +28,7 @@ class Xhgui_Controller_Drop extends Xhgui_Controller
 
         $param = $request->post();
         $range = isset($param['range']) ? $param['range'] : 0;
-        $ip = isset($param['ip']) ? $param['ip'] : '';
+        $ip = isset($param['ip']) ? trim($param['ip']) : '';
         if (empty($range) || ($range == 2 && empty($ip)) || !in_array($range, [1,2])) {
             return $response->body(json_encode(['info' => '参数错误']));
         }

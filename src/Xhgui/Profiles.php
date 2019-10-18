@@ -69,6 +69,7 @@ class Xhgui_Profiles
     public function paginate($options)
     {
         $opts = $this->_mapper->convert($options);
+        // var_dump($opts);die;
 
         $totalRows = $this->_collection->find(
             $opts['conditions'],

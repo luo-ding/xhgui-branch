@@ -66,6 +66,9 @@ class Xhgui_Db_Mapper
         if (!empty($search['remote_addr'])) {
             $conditions['meta.SERVER.REMOTE_ADDR'] = (string)$search['remote_addr'];
         }
+        if (!empty($search['server_name'])) {
+            $conditions['meta.SERVER.SERVER_NAME'] = (string)$search['server_name'];
+        }
         if (isset($search['cookie'])) {
             $conditions['meta.SERVER.HTTP_COOKIE'] = (string)$search['cookie'];
         }
